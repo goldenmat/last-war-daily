@@ -1,12 +1,149 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Last War Daily</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last War Daily</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Last War Daily</h1>
-  <p>Il sito è online 🚀</p>
+    <h1>Last War Daily - <span id="serverName">Server 1</span></h1>
+
+    <div class="server-tabs">
+        <button class="server-tab active" data-server="server1">
+            Server 1
+        </button>
+
+        <button class="server-tab" data-server="server2">
+            Server 2
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div>Ultima modifica: <span id="lastModified">--</span></div>
+            <button id="resetBtn" class="reset-btn">Reset</button>
+        </div>
+
+        <!-- TRUCK & PLUNDER -->
+        <div class="section">
+            <h2>Truck & Plunder</h2>
+            Mandare 5 Truck
+            <input type="checkbox" class="task" data-id="truck-1"><input type="checkbox" class="task" data-id="truck-2"><input type="checkbox" class="task" data-id="truck-3"><input type="checkbox" class="task" data-id="truck-4"><input type="checkbox" class="task" data-id="truck-5">
+            <br>
+            Plunderare 4 Truck
+            <input type="checkbox" class="task" data-id="plunder-1"><input type="checkbox" class="task" data-id="plunder-2"><input type="checkbox" class="task" data-id="plunder-3"><input type="checkbox" class="task" data-id="plunder-4">
+        </div>
+
+        <!-- TASK -->
+        <div class="section">
+            <h2>Task</h2>
+            8 Task
+            <input type="checkbox" class="task" data-id="task-1"><input type="checkbox" class="task" data-id="task-2"><input type="checkbox" class="task" data-id="task-3"><input type="checkbox" class="task" data-id="task-4"><input type="checkbox" class="task" data-id="task-5"><input type="checkbox" class="task" data-id="task-6"><input type="checkbox" class="task" data-id="task-7"><input type="checkbox" class="task" data-id="task-8">
+            <br>
+            <span class="golden">9º Golden <input type="checkbox" class="task golden" data-id="task-golden"></span>
+            <br>
+            Task Assist
+            <input type="checkbox" class="task" data-id="assist-1"><input type="checkbox" class="task" data-id="assist-2"><input type="checkbox" class="task" data-id="assist-3"><input type="checkbox" class="task" data-id="assist-4"><input type="checkbox" class="task" data-id="assist-5">
+            <br>
+            Task Plunder
+            <input type="checkbox" class="task" data-id="plunder-task-1"><input type="checkbox" class="task" data-id="plunder-task-2"><input type="checkbox" class="task" data-id="plunder-task-3"><input type="checkbox" class="task" data-id="plunder-task-4"><input type="checkbox" class="task" data-id="plunder-task-5">
+        </div>
+
+        <!-- BAULI VS -->
+        <div class="section">
+            <h2>VS Vault (9)</h2>
+            <input type="checkbox" class="task" data-id="vault-1"><input type="checkbox" class="task" data-id="vault-2"><input type="checkbox" class="task" data-id="vault-3">|<input type="checkbox" class="task" data-id="vault-4"><input type="checkbox" class="task" data-id="vault-5"><input type="checkbox" class="task" data-id="vault-6">|<input type="checkbox" class="task" data-id="vault-7"><input type="checkbox" class="task" data-id="vault-8"><input type="checkbox" class="task" data-id="vault-9">
+        </div>
+
+        <!-- ARMS RACE -->
+        <div class="section">
+            <h2>Arms Race</h2>
+            04:00-08:00
+            <input type="checkbox" class="task" data-id="arms1-1"><input type="checkbox" class="task" data-id="arms1-2"><input type="checkbox" class="task" data-id="arms1-3">
+            <br>
+            08:00-12:00
+            <input type="checkbox" class="task" data-id="arms2-1"><input type="checkbox" class="task" data-id="arms2-2"><input type="checkbox" class="task" data-id="arms2-3">
+            <br>
+            12:00-16:00
+            <input type="checkbox" class="task" data-id="arms3-1"><input type="checkbox" class="task" data-id="arms3-2"><input type="checkbox" class="task" data-id="arms3-3">
+            <br>
+            16:00-20:00
+            <input type="checkbox" class="task" data-id="arms4-1"><input type="checkbox" class="task" data-id="arms4-2"><input type="checkbox" class="task" data-id="arms4-3">
+            <br>
+            20:00-00:00
+            <input type="checkbox" class="task" data-id="arms5-1"><input type="checkbox" class="task" data-id="arms5-2"><input type="checkbox" class="task" data-id="arms5-3">
+            <br>
+            00:00-04:00
+            <input type="checkbox" class="task" data-id="arms6-1"><input type="checkbox" class="task" data-id="arms6-2"><input type="checkbox" class="task" data-id="arms6-3">
+        </div>
+
+        <!-- ARENA -->
+        <div class="section">
+            <h2>Arena</h2>
+            <select id="arenaType">
+                <option value="storm">Storm Arena</option>
+                <option value="brawl">3v3 Brawl</option>
+            </select>
+            <span id="arenaFights"></span>
+            <br>
+            Storm Arena Like
+            <input type="checkbox" class="task" data-id="arena-storm-1"><input type="checkbox" class="task" data-id="arena-storm-2"><input type="checkbox" class="task" data-id="arena-storm-3">
+            <br>
+            3v3 Brawl Like
+            <input type="checkbox" class="task" data-id="arena-brawl-1"><input type="checkbox" class="task" data-id="arena-brawl-2"><input type="checkbox" class="task" data-id="arena-brawl-3">
+        </div>
+
+        <!-- DOOM WALKER & ELITE -->
+        <div class="section">
+            <h2>Doom Walker & Elite Assist</h2>
+            Doom Walker First Blood
+            <input type="checkbox" class="task" data-id="doom-walker">
+            <br>
+            Elite Assist
+            <input type="checkbox" class="task" data-id="elite-1"><input type="checkbox" class="task" data-id="elite-2"><input type="checkbox" class="task" data-id="elite-3"><input type="checkbox" class="task" data-id="elite-4"><input type="checkbox" class="task" data-id="elite-5"><input type="checkbox" class="task" data-id="elite-6"><input type="checkbox" class="task" data-id="elite-7"><input type="checkbox" class="task" data-id="elite-8"><input type="checkbox" class="task" data-id="elite-9"><input type="checkbox" class="task" data-id="elite-10"><input type="checkbox" class="task" data-id="elite-11"><input type="checkbox" class="task" data-id="elite-12"><input type="checkbox" class="task" data-id="elite-13"><input type="checkbox" class="task" data-id="elite-14"><input type="checkbox" class="task" data-id="elite-15"><input type="checkbox" class="task" data-id="elite-16"><input type="checkbox" class="task" data-id="elite-17"><input type="checkbox" class="task" data-id="elite-18"><input type="checkbox" class="task" data-id="elite-19"><input type="checkbox" class="task" data-id="elite-20">
+        </div>
+
+        <!-- CAMPAIGN -->
+        <div class="section">
+            <h2>Campaign</h2>
+            <div class="campaign">
+                <div class="campaign-team">
+                    <div style="margin-bottom: 4px;">
+                        <strong>Tank</strong> <span class="level" id="tank-level">Level 1</span>
+                        <button class="btn-level minus" data-team="tank">−</button>
+                        <button class="btn-level" data-team="tank">+</button>
+                        <button class="btn-row add" data-team="tank">Add Row</button>
+                        <button class="btn-row remove" data-team="tank">Remove Row</button>
+                    </div>
+                    <div class="missions-container" id="tank-missions"></div>
+                </div>
+
+                <div class="campaign-team">
+                    <div style="margin-bottom: 4px;">
+                        <strong>Aircraft</strong> <span class="level" id="aircraft-level">Level 1</span>
+                        <button class="btn-level minus" data-team="aircraft">−</button>
+                        <button class="btn-level" data-team="aircraft">+</button>
+                        <button class="btn-row add" data-team="aircraft">Add Row</button>
+                        <button class="btn-row remove" data-team="aircraft">Remove Row</button>
+                    </div>
+                    <div class="missions-container" id="aircraft-missions"></div>
+                </div>
+
+                <div class="campaign-team">
+                    <div style="margin-bottom: 4px;">
+                        <strong>Missile</strong> <span class="level" id="missile-level">Level 1</span>
+                        <button class="btn-level minus" data-team="missile">−</button>
+                        <button class="btn-level" data-team="missile">+</button>
+                        <button class="btn-row add" data-team="missile">Add Row</button>
+                        <button class="btn-row remove" data-team="missile">Remove Row</button>
+                    </div>
+                    <div class="missions-container" id="missile-missions"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
